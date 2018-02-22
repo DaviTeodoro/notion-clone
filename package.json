@@ -1,0 +1,86 @@
+{
+  "name": "feathers-nuxt",
+  "description": "A FeathersJS + NuxtJS demo/boilerplate",
+  "version": "0.0.0",
+  "homepage": "https://github.com/silvestreh/feathers-nuxt",
+  "main": "src",
+  "keywords": [
+    "feathers"
+  ],
+  "nuxt": {
+    "host": "0.0.0.0",
+    "port": "3030"
+  },
+  "author": {
+    "name": "Silvestre Herrera",
+    "email": "silvestre.herrera@gmail.com"
+  },
+  "contributors": [
+    "Davi Teodoro"
+  ],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "test": "test/"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "yarn": ">= 0.18.0"
+  },
+  "scripts": {
+    "test": "npm run eslint && npm run mocha",
+    "eslint": "eslint src/. test/. --config .eslintrc.js",
+    "build": "nuxt build",
+    "dev": "cross-env-shell DEBUG=nuxt:* nodemon --watch src/ --watch config/ src/index.js",
+    "start": "NODE_ENV=production node src/",
+    "mocha": "mocha test/ --recursive",
+    "heroku-postbuild": "npm run build"
+  },
+  "dependencies": {
+    "@feathersjs/authentication": "^2.1.1",
+    "@feathersjs/authentication-client": "^1.0.2",
+    "@feathersjs/authentication-jwt": "^1.0.2",
+    "@feathersjs/authentication-local": "^1.0.4",
+    "@feathersjs/authentication-oauth2": "^1.0.3",
+    "@feathersjs/configuration": "^1.0.2",
+    "@feathersjs/errors": "^3.2.1",
+    "@feathersjs/express": "^1.1.2",
+    "@feathersjs/feathers": "^3.0.5",
+    "@feathersjs/socketio": "^3.0.2",
+    "@feathersjs/socketio-client": "^1.0.2",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.0",
+    "compression": "^1.7.0",
+    "cors": "^2.8.4",
+    "feathers-authentication-hooks": "^0.1.4",
+    "feathers-hooks-common": "^3.7.2",
+    "feathers-mongoose": "^5.1.2",
+    "feathers-vuex": "^1.1.4",
+    "helmet": "^3.8.1",
+    "js-cookie": "^2.1.4",
+    "lodash": "^4.17.5",
+    "marked": "^0.3.14",
+    "mongoose": "^4.11.11",
+    "node-emoji": "^1.8.1",
+    "normalize.css": "^8.0.0",
+    "nuxt": "^1.0.0-rc11",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth20": "^1.0.0",
+    "serve-favicon": "^2.4.3",
+    "socket.io-client": "^2.0.3",
+    "vuedraggable": "^2.16.0",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.3",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-import-resolver-webpack": "^0.8.3",
+    "eslint-plugin-html": "^3.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "mocha": "^3.5.3",
+    "nodemon": "^1.12.0",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  }
+}
