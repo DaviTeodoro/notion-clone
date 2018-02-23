@@ -57,7 +57,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .container {
   display: flex;
   flex-direction: row;
@@ -84,7 +84,7 @@ export default {
   font-size: 22px;
 }
 .text-block {
-  width: 720px;
+  width: $editor-size;
 }
 textarea {
   width: 100%;
@@ -101,12 +101,11 @@ textarea:focus {
 .paragraph {
   margin: 0px;
   text-align: start;
-  font-size: 16px;
+  font-size: $editor-font-size;
   height: 100%;
   color: rgb(66, 66, 65);
   fill: currentcolor;
   line-height: 1.5;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: $editor-font;
 }
 </style>

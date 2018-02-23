@@ -23,19 +23,21 @@ export default {
     }
   },
   mounted() {
-    const parentId = this.parent[0]._id;
-    this.$store
-      .dispatch('pages/get', parentId)
-      .then(res => {
-        this.parentTitle = chunkString(res.title, 30);
-      })
-      .catch(e => {
-        if ((e.code = 404)) {
-          console.log(
-            'Essa pagina nao tem pai e deve ser enviada para a lixeira'
-          );
-        }
-      });
+    if (this.parent[0]) {
+      const parentId = this.parent[0]._id;
+      this.$store
+        .dispatch('pages/get', parentId)
+        .then(res => {
+          this.parentTitle = chunkString(res.title, 30);
+        })
+        .catch(e => {
+          if ((e.code = 404)) {
+            console.log(
+              'Essa pagina nao tem pai e deve ser enviada para a lixeira'
+            );
+          }
+        });
+    }
   }
 };
 </script>

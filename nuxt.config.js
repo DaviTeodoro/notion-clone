@@ -19,6 +19,7 @@ module.exports = {
       '@feathersjs/authentication-client',
     ],
   },
+  modules: [['nuxt-sass-resources-loader', resolve(__dirname, './client/assets/css/main.scss')]],
   link: [
     {
       rel: 'icon',
@@ -26,5 +27,5 @@ module.exports = {
       href: 'favicon.ico',
     },
   ],
-  css: ['normalize.css', '@/assets/css/main.css'],
+  css: ['normalize.css', '@/assets/css/main.scss'],
 };
