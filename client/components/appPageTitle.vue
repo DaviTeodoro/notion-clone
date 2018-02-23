@@ -1,9 +1,9 @@
 <template>
   <div>
-    <img src="" alt="">
+    <div class="page-icon" v-html="markdown" @click="updateEmoji"></div>
     <textarea id="text-area"
               v-bind:style="{height: textHeight + 'px'}"
-              v-bind:value="title"
+              v-bind:value="page.title"
               v-on:input="updateValue($event.target.value)"
               placeholder="Page title..."
               @keyup="autoGrow"
@@ -13,9 +13,10 @@
 </template>
 
 <script>
+import marked from './../plugins/parse';
 import { textBlockMixin } from './mixins/textBlock';
 export default {
-  props: ['title'],
+  props: ['page'],
   mixins: [textBlockMixin],
   data() {
     return {
@@ -25,6 +26,24 @@ export default {
   methods: {
     updateValue(value) {
       this.$emit('input', value);
+    },
+    updateEmoji() {
+      switch (this.page.emoji) {
+        case ':page_facing_up:':
+          this.$emit('updateEmoji', ':pig:');
+          break;
+        case ':pig:':
+          this.$emit('updateEmoji', ':heart:');
+          break;
+        case ':heart:':
+          this.$emit('updateEmoji', ':herb:');
+          break;
+        case ':herb:':
+          this.$emit('updateEmoji', ':page_facing_up:');
+          break;
+        default:
+          break;
+      }
     },
     keyboardControll(event) {
       switch (event.key) {
@@ -36,6 +55,11 @@ export default {
       }
     }
   },
+  computed: {
+    markdown() {
+      return marked(this.page.emoji);
+    }
+  },
   mounted() {
     const element = this.$el.querySelector('#text-area');
     this.textHeight = element.scrollHeight;
@@ -43,15 +67,15 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .page-title {
   align-self: flex-start;
-  width: 680px;
+  width: $editor-size - 40;
   padding: 0;
   margin: 0;
   resize: none;
   overflow: hidden;
-  min-height: 100px;
+  min-height: 80px;
   border: none;
   text-align: start;
   font-size: 32px;
@@ -59,10 +83,14 @@ export default {
   color: rgb(66, 66, 65);
   fill: currentcolor;
   line-height: 1.5;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: $editor-font;
 }
 .page-title:focus {
   outline: none;
+}
+.page-icon {
+  font-size: 46px;
+  cursor: pointer;
+  width: 30px;
 }
 </style>

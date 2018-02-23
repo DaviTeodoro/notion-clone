@@ -53,7 +53,7 @@ export const textBlockMixin = {
     },
   },
   computed: {
-    mk() {
+    markdown() {
       return marked(this.content.text);
     },
   },

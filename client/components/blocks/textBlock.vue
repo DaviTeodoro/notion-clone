@@ -1,6 +1,6 @@
 <template>
     <div v-if="content.type === 'text'" @click="activeEditor" class="text-block">
-      <div v-show="!active" v-html="mk" class="paragraph"></div>
+      <div v-show="!active" v-html="markdown" class="paragraph"></div>
       <textarea id="text-area"
                 v-bind:style="{height: textHeight + 'px'}"
                 v-on:keyup="keyboardControll"
@@ -35,9 +35,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .text-block {
-  width: 720px;
+  width: $editor-size;
 }
 textarea {
   width: 100%;
@@ -53,12 +53,11 @@ textarea:focus {
 .paragraph {
   margin: 0px;
   text-align: start;
-  font-size: 16px;
+  font-size: $editor-font-size;
   /* height: 100%; */
   color: rgb(66, 66, 65);
   fill: currentcolor;
   line-height: 1.5;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: $editor-font;
 }
 </style>

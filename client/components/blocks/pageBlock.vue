@@ -2,18 +2,21 @@
 <div>
   <div class="page-block">
     <nuxt-link :to="content.link" class="page-link">
-      <h3>📄 {{title}}</h3>
+      <div v-html="emoji"></div>
+      <h3> {{title}}</h3>
     </nuxt-link>
   </div>
 </div>
 </template>
 
 <script>
+import marked from './../../plugins/parse';
 export default {
   props: ['content'],
   data() {
     return {
-      title: '.....'
+      title: '.....',
+      emoji: ':page_facing_up:'
     };
   },
   created() {
@@ -22,6 +25,7 @@ export default {
         .dispatch('pages/get', this.content.pageId)
         .then(res => {
           this.title = res.title;
+          this.emoji = marked(res.emoji);
         })
         .catch(e => {
           if (e.code == 404) {
@@ -33,10 +37,10 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .page-block {
   cursor: pointer;
-  width: 600px;
+  width: $editor-size;
   transition-duration: 300ms;
   border-radius: 3px;
   padding: 1px 0px;
@@ -45,6 +49,8 @@ export default {
   background-color: rgba(194, 194, 194, 0.24);
 }
 .page-link {
+  display: flex;
+  align-items: center;
   text-decoration: none;
 }
 </style>
