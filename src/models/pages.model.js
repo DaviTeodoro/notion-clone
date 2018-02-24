@@ -8,7 +8,6 @@ module.exports = function (app) {
   const pages = new Schema(
     {
       title: { type: String, required: true },
-      url: { type: String, required: true },
       parent: [Schema.Types.Mixed],
       emoji: { type: String, default: ':page_facing_up:' },
       imgCover: {

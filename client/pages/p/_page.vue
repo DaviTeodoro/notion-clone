@@ -1,7 +1,7 @@
 <template>
   <section class="container" @keydown.ctrl.83.prevent="savePage">
     <app-breadcrumb :parent="page.parent" :title="page.title" />
-    <app-page-title :title="page.title" @input="updateTitle" @newLine="newLine()"/>
+    <app-page-title :page="page" @input="updateTitle" @updateEmoji="updateEmoji" @newLine="newLine()"/>
     <draggable v-model="page.blocks" :options="{group:'people'}" @start="drag=true" @end="drag=false">
       <app-block-render v-for="(block, index) in page.blocks"
                 :key="block.id"
@@ -37,20 +37,12 @@ export default {
     draggable,
     appBreadcrumb
   },
-  async fetch({ store, params }) {
+  asyncData({ store, params }) {
     return new Promise((resolve, reject) => {
-      try {
-        resolve(store.dispatch('pages/get', params.page));
-      } catch (error) {
-        reject(error);
-      }
+      store.dispatch('pages/get', params.page).then(page => {
+        resolve({ page });
+      });
     });
-  },
-  computed: {
-    ...mapGetters('pages', { getPage: 'get' }),
-    page() {
-      return this.getPage(this.$route.params.page);
-    }
   },
   methods: {
     ...mapActions({
@@ -77,6 +69,9 @@ export default {
       } catch (e) {
         throw e;
       }
+    },
+    updateEmoji(value) {
+      this.page.emoji = value;
     },
     updateTitle(value) {
       this.page.title = value;

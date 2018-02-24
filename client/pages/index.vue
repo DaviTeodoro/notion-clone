@@ -1,7 +1,6 @@
 <template>
   <section class="container">
     <div class="pages-grid">
-      <!-- <draggable v-model="pages" :options="{group:'people'}" @start="drag=true" @end="drag=false"> -->
         <nuxt-link v-for="page in pages"
                    :key="page._id"
                    :to="{path: '/p/' + page._id}"
@@ -9,7 +8,6 @@
           <h1>📄</h1>
           <h4>{{page.title}}</h4>
         </nuxt-link>
-      <!-- </draggable> -->
     </div>
     <!-- <pre>{{pages}}</pre> -->
     <app-new-block @newBlock="createBlock($event)"> </app-new-block>
@@ -54,7 +52,8 @@ export default {
 
 <style scoped>
 .container {
-  display: grid;
+  display: flex;
+  flex-flow: column;
 }
 h1,
 h2,

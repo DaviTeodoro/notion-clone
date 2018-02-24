@@ -6,6 +6,10 @@ Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
 $editor-font-size: 16px;
 
+$btn-color: darkslategrey;
+
+$feedback-color: fade-out($btn-color, .8);
+
 html {
   font-family: $editor-font;
   font-size: 16px;
@@ -19,16 +23,15 @@ html {
 
 
 .btn {
-  color: darkslategrey;
+  color: $btn-color;
   font-size: 16px;
   text-decoration: none;
   padding: 4px;
   border-radius: 4px;
-  transition-duration: 300ms;
   cursor: pointer;
 }
 .btn:hover {
-  background-color: rgba(47, 79, 79, 0.151);
+  background-color: $feedback-color;
 }
 
 .btn-group {
@@ -37,11 +40,14 @@ html {
   justify-content: center;
   align-content: center;
   justify-items: center;
-  align-items: center;
+  // align-items: center;
 }
 /* p {
   margin-top: 10px;
 } */
 img {
   max-width: $editor-size;
+}
+.nuxt-link-active {
+  font-weight: bold;
 }

@@ -43,7 +43,6 @@ export default {
     async newPage() {
       const page = {
         title: 'Page title',
-        url: 'page-title-3123',
         parent: [{ _id: this.$route.params.page }]
       };
       try {
