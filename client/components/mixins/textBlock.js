@@ -45,6 +45,11 @@ export const textBlockMixin = {
             }
           }
           break;
+        case 'Tab':
+          this.enter = 0;
+          this.backspace = 0;
+          console.log('tab');
+          break;
         default:
           this.enter = 0;
           this.backspace = 0;

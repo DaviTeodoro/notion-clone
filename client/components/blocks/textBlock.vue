@@ -3,7 +3,7 @@
       <div v-show="!active" v-html="markdown" class="paragraph"></div>
       <textarea id="text-area"
                 v-bind:style="{height: textHeight + 'px'}"
-                v-on:keyup="keyboardControll"
+                v-on:keyup.prevent="keyboardControll"
                 v-on:blur="active = false"
                 v-if="content.type==='text' && active"
                 placeholder="paragraph..."

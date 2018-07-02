@@ -6,8 +6,7 @@
               v-bind:value="page.title"
               v-on:input="updateValue($event.target.value)"
               placeholder="Page title..."
-              @keyup="autoGrow"
-              v-on:keydown.stop="keyboardControll"
+              v-on:keyup.stop="keyboardControll"
               class="page-title"/>
   </div>
 </template>

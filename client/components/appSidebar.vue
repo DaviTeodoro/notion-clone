@@ -2,7 +2,7 @@
   <div class="side-bar">
     <div class="btn-group">
       <p>Workspace</p>
-      <div class="btn" @click="newWorkspace">+</div>
+      <div class="btn" @click="newWorkspace"><p>+</p></div>
     </div>
     <div class="workspaces-nav">
       <workspace-nav v-for="page in workspaces"
@@ -75,6 +75,14 @@ export default {
   left: 0;
   overflow-x: hidden;
   padding-top: 20px;
+}
+.btn {
+  border: 1px solid rgba(0, 0, 0, 0.103);
+  justify-items: center;
+  align-items: center;
+}
+.btn p {
+  margin: 4px;
 }
 .btn-group {
   justify-content: space-between;
