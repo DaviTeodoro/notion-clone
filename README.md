@@ -1,6 +1,6 @@
 # A humble Notion clone
 
-> that is all
+> this is a toy projet that implements some type of marriage between a text editor and a wiki. Its a intersting concept, and you can find more about it here https://www.notion.so/.
 
 ## Getting Started
 
@@ -10,22 +10,14 @@ Getting up and running is as easy as 1, 2, 3.
 2. Install your dependencies
 
     ```
-    cd path/to/feathers-nuxt; npm install
+    cd path/to/notion-clone; npm install
     ```
 
 3. Start your app
 
     ```
-    npm start
+    npm run dev
     ```
-
-## Testing
-
-Simply run `npm test` and all your tests in the `test/` directory will be run.
-
-## Help
-
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
 
 ## Changelog
 
